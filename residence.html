@@ -277,6 +277,27 @@
   .back-link{display:inline-block; margin-top:22px; color:var(--gold-soft); font-size:13px; text-decoration:none; border-bottom:1px solid rgba(201,162,75,.4); padding-bottom:2px;}
   .back-link:hover{color:var(--gold);}
   @media (max-width:640px){ .gallery-grid{grid-template-columns:repeat(2,1fr) !important;} }
+
+  .lb-overlay{
+    position:fixed; inset:0; background:rgba(15,10,18,.95);
+    display:none; align-items:center; justify-content:center;
+    flex-direction:column; z-index:200; padding:20px;
+  }
+  .lb-overlay.open{display:flex;}
+  .lb-img{max-width:min(90vw,760px); max-height:70vh; object-fit:contain; border-radius:10px;}
+  .lb-caption{color:#e3cd96; font-size:14px; margin-top:16px; font-weight:700;}
+  .lb-nav{display:flex; align-items:center; gap:28px; margin-top:18px;}
+  .lb-btn{
+    background:rgba(255,255,255,.08); border:1px solid rgba(201,162,75,.4);
+    color:#fff; width:44px; height:44px; border-radius:50%;
+    font-size:20px; cursor:pointer; display:flex; align-items:center; justify-content:center;
+  }
+  .lb-btn:hover{border-color:var(--gold);}
+  .lb-close{
+    position:absolute; top:20px; right:24px;
+    background:none; border:none; color:#fff; font-size:28px; cursor:pointer;
+  }
+  .room-thumb{cursor:pointer; border:none; padding:0; display:block; width:100%;}
 </style>
 
 </head>
@@ -331,30 +352,30 @@
   <div class="wrap">
     <div class="sec-eyebrow">ROOM TYPES</div>
     <h2 class="sec-title serif">객실 타입</h2>
-    <p class="sec-lede">사진을 클릭하면 실제 객실 사진을 크게 볼 수 있습니다.</p>
+    <p class="sec-lede">사진을 클릭하면 여러 장을 넘겨가며 볼 수 있습니다.</p>
     <div class="grid g2" style="margin-top:24px;">
       <div class="card" style="padding:0; overflow:hidden;">
-        <a href="images/room-studio.jpg" target="_blank" rel="noopener">
-          <img src="images/room-studio.jpg" alt="스튜디오 이그제큐티브 객실 사진" style="width:100%; height:190px; object-fit:cover; display:block;">
-        </a>
+        <button class="room-thumb" onclick="openGallery('studio',0)" aria-label="스튜디오 이그제큐티브 사진 더 보기">
+          <img src="images/room-studio-1.jpg" alt="스튜디오 이그제큐티브 객실 사진" style="width:100%; height:190px; object-fit:cover; display:block;">
+        </button>
         <div style="padding:20px 22px;">
           <h3>스튜디오 이그제큐티브</h3>
           <p>42㎡ · 학부모 1 + 자녀 1 (트윈베드 2)</p>
         </div>
       </div>
       <div class="card" style="padding:0; overflow:hidden;">
-        <a href="images/room-onebed.jpg" target="_blank" rel="noopener">
-          <img src="images/room-onebed.jpg" alt="원베드룸 프리미어 객실 사진" style="width:100%; height:190px; object-fit:cover; display:block;">
-        </a>
+        <button class="room-thumb" onclick="openGallery('onebed',0)" aria-label="원베드룸 프리미어 사진 더 보기">
+          <img src="images/room-onebed-1.jpg" alt="원베드룸 프리미어 객실 사진" style="width:100%; height:190px; object-fit:cover; display:block;">
+        </button>
         <div style="padding:20px 22px;">
           <h3>원베드룸 프리미어</h3>
           <p>57㎡ · 학부모 1~2 + 자녀 1~2</p>
         </div>
       </div>
       <div class="card" style="padding:0; overflow:hidden;">
-        <a href="images/room-twobed.jpg" target="_blank" rel="noopener">
-          <img src="images/room-twobed.jpg" alt="투베드룸 프리미어 객실 사진" style="width:100%; height:190px; object-fit:cover; display:block;">
-        </a>
+        <button class="room-thumb" onclick="openGallery('twobed',0)" aria-label="투베드룸 프리미어 사진 더 보기">
+          <img src="images/room-twobed-1.jpg" alt="투베드룸 프리미어 객실 사진" style="width:100%; height:190px; object-fit:cover; display:block;">
+        </button>
         <div style="padding:20px 22px;">
           <h3>투베드룸 프리미어</h3>
           <p>90㎡ · 학부모 2 + 자녀 2</p>
@@ -366,6 +387,72 @@
     </ul>
   </div>
 </section>
+
+<div class="lb-overlay" id="lbOverlay">
+  <button class="lb-close" onclick="closeGallery()" aria-label="닫기">×</button>
+  <img class="lb-img" id="lbImg" src="" alt="객실 사진 확대보기">
+  <div class="lb-caption" id="lbCaption"></div>
+  <div class="lb-nav">
+    <button class="lb-btn" onclick="prevPhoto()" aria-label="이전 사진">‹</button>
+    <span class="lb-caption" id="lbCounter" style="margin-top:0;"></span>
+    <button class="lb-btn" onclick="nextPhoto()" aria-label="다음 사진">›</button>
+  </div>
+</div>
+
+<script>
+  const roomPhotos = {
+    studio: {
+      title: "스튜디오 이그제큐티브",
+      files: ["images/room-studio-1.jpg","images/room-studio-2.jpg"]
+    },
+    onebed: {
+      title: "원베드룸 프리미어",
+      files: ["images/room-onebed-1.jpg","images/room-onebed-2.jpg","images/room-onebed-3.jpg","images/room-onebed-4.jpg"]
+    },
+    twobed: {
+      title: "투베드룸 프리미어",
+      files: ["images/room-twobed-1.jpg","images/room-twobed-2.jpg","images/room-twobed-3.jpg","images/room-twobed-4.jpg"]
+    }
+  };
+  let currentRoom = null, currentIndex = 0;
+
+  function openGallery(room, idx){
+    currentRoom = room;
+    currentIndex = idx;
+    updateLightbox();
+    document.getElementById('lbOverlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeGallery(){
+    document.getElementById('lbOverlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  function nextPhoto(){
+    const files = roomPhotos[currentRoom].files;
+    currentIndex = (currentIndex + 1) % files.length;
+    updateLightbox();
+  }
+  function prevPhoto(){
+    const files = roomPhotos[currentRoom].files;
+    currentIndex = (currentIndex - 1 + files.length) % files.length;
+    updateLightbox();
+  }
+  function updateLightbox(){
+    const room = roomPhotos[currentRoom];
+    document.getElementById('lbImg').src = room.files[currentIndex];
+    document.getElementById('lbCaption').textContent = room.title;
+    document.getElementById('lbCounter').textContent = (currentIndex+1) + ' / ' + room.files.length;
+  }
+  document.getElementById('lbOverlay').addEventListener('click', function(e){
+    if(e.target === this) closeGallery();
+  });
+  document.addEventListener('keydown', function(e){
+    if(!document.getElementById('lbOverlay').classList.contains('open')) return;
+    if(e.key === 'Escape') closeGallery();
+    if(e.key === 'ArrowRight') nextPhoto();
+    if(e.key === 'ArrowLeft') prevPhoto();
+  });
+</script>
 
 <section>
   <div class="wrap">
