@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>고젠아츠 소개 | 온스테이지 방콕 리트릿</title>
+<meta name="description" content="방콕 현지 공연예술 프로덕션 고젠아츠와 총괄 디렉터 야니카 고젠을 소개합니다.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@600;700;900&family=Noto+Sans+KR:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --stage:#1e1424;
+    --plum:#432a49;
+    --plum-soft:#5a3d62;
+    --gold:#c9a24b;
+    --gold-soft:#e3cd96;
+    --paper:#f8f5ef;
+    --ink:#28202c;
+    --muted:#6f6376;
+    --line:#e5ddd2;
+    --white:#ffffff;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Noto Sans KR', sans-serif;
+    color:var(--ink);
+    background:var(--paper);
+    line-height:1.7;
+    font-size:16px;
+    -webkit-font-smoothing:antialiased;
+  }
+  .serif{font-family:'Noto Serif KR', serif;}
+  .wrap{max-width:860px; margin:0 auto; padding:0 22px;}
+  section{padding:72px 0;}
+  @media (max-width:640px){ section{padding:56px 0;} }
+
+  .topbar{
+    position:sticky; top:0; z-index:50;
+    background:rgba(30,20,36,.96); backdrop-filter:blur(6px);
+    color:var(--gold-soft);
+    padding:12px 0;
+    border-bottom:1px solid rgba(201,162,75,.25);
+  }
+  .topbar .wrap{display:flex; align-items:center; justify-content:space-between; gap:12px;}
+  .topbar .brand{font-weight:800; letter-spacing:.06em; font-size:14px; color:#fff;}
+  .topbar .brand span{color:var(--gold);}
+  .topbar a.cta-mini{
+    background:var(--gold); color:var(--stage);
+    font-weight:800; font-size:13px;
+    padding:8px 16px; border-radius:999px; text-decoration:none;
+    white-space:nowrap;
+  }
+  .topbar .right-group{display:flex; align-items:center; gap:12px;}
+  .topbar .social-mini{display:flex; align-items:center; gap:6px;}
+  .topbar .social-mini a{
+    display:flex; align-items:center; justify-content:center;
+    width:32px; height:32px; border-radius:50%;
+    border:1px solid rgba(201,162,75,.45);
+    color:var(--gold-soft); text-decoration:none;
+    transition:border-color .15s ease;
+  }
+  .topbar .social-mini a:hover{border-color:var(--gold);}
+  .topbar .social-mini svg{width:16px; height:16px;}
+  .topbar .right-cluster{display:flex; align-items:center; gap:22px;}
+  .topbar .nav-links{display:flex; align-items:center; gap:20px;}
+  .topbar .nav-links a{
+    color:var(--gold-soft); text-decoration:none; font-size:13px; font-weight:500;
+    white-space:nowrap;
+  }
+  .topbar .nav-links a:hover{color:var(--gold);}
+  .topbar .nav-links a.active{color:var(--gold); font-weight:800;}
+  @media (max-width:760px){ .topbar .nav-links{display:none;} }
+
+  .hero{
+    background:
+      radial-gradient(ellipse 90% 55% at 50% -5%, rgba(201,162,75,.28), transparent 60%),
+      linear-gradient(180deg, #241830 0%, var(--stage) 70%);
+    color:#fff; text-align:center;
+    padding:96px 0 84px;
+    position:relative; overflow:hidden;
+  }
+  .hero .eyebrow{
+    display:inline-block;
+    font-size:12px; letter-spacing:.34em; font-weight:700;
+    color:var(--gold);
+    padding-bottom:14px; margin-bottom:26px;
+    border-bottom:1px solid rgba(201,162,75,.5);
+  }
+  .hero h1{
+    font-family:'Noto Serif KR', serif;
+    font-weight:900;
+    font-size:clamp(30px, 6vw, 52px);
+    line-height:1.35;
+    letter-spacing:.01em;
+  }
+  .hero h1 .gold{color:var(--gold-soft);}
+  .hero .lede{
+    margin:26px auto 0; max-width:560px;
+    font-size:clamp(15px,2.6vw,17.5px); color:#d9cfe0; font-weight:400;
+  }
+  .hero .facts{
+    margin:36px auto 0;
+    display:flex; justify-content:center; gap:0;
+    flex-wrap:wrap;
+    color:var(--gold-soft); font-size:13.5px; font-weight:500; letter-spacing:.02em;
+  }
+  .hero .facts span{padding:0 16px; position:relative;}
+  .hero .facts span + span::before{
+    content:""; position:absolute; left:0; top:50%; transform:translateY(-50%);
+    width:1px; height:12px; background:rgba(201,162,75,.5);
+  }
+  .cta-row{margin-top:44px; display:flex; justify-content:center; gap:14px; flex-wrap:wrap;}
+  a.btn{
+    display:inline-block; text-decoration:none; font-weight:800;
+    border-radius:999px; padding:16px 34px; font-size:16px;
+    transition:transform .15s ease;
+  }
+  a.btn:active{transform:scale(.97);}
+  a.btn-gold{background:var(--gold); color:var(--stage);}
+  a.btn-ghost{border:1px solid rgba(255,255,255,.45); color:#fff;}
+  .hero .deadline{
+    margin-top:22px; font-size:13px; color:#b3a7bd;
+  }
+  .hero .deadline b{color:var(--gold-soft); font-weight:700;}
+
+  .numbers{background:var(--plum); color:#fff; padding:0;}
+  .numbers .wrap{
+    display:grid; grid-template-columns:repeat(4,1fr);
+    text-align:center;
+  }
+  .numbers .cell{padding:30px 8px; border-left:1px solid rgba(255,255,255,.12);}
+  .numbers .cell:first-child{border-left:none;}
+  .numbers .num{font-family:'Noto Serif KR',serif; font-weight:900; font-size:clamp(20px,4vw,30px); color:var(--gold-soft);}
+  .numbers .lab{font-size:12.5px; color:#cdbfd6; margin-top:4px;}
+  @media (max-width:640px){
+    .numbers .wrap{grid-template-columns:repeat(2,1fr);}
+    .numbers .cell:nth-child(3){border-left:none;}
+    .numbers .cell{border-top:1px solid rgba(255,255,255,.12);}
+    .numbers .cell:nth-child(-n+2){border-top:none;}
+  }
+
+  .sec-eyebrow{
+    font-size:12px; letter-spacing:.28em; font-weight:800; color:var(--gold);
+    margin-bottom:12px;
+  }
+  h2.sec-title{
+    font-family:'Noto Serif KR',serif; font-weight:900;
+    font-size:clamp(23px,4.4vw,32px); line-height:1.4;
+    margin-bottom:22px;
+  }
+  .sec-lede{color:var(--muted); max-width:640px; margin-bottom:8px;}
+
+  .story p{max-width:680px; margin-bottom:16px;}
+  .story .pull{
+    font-family:'Noto Serif KR',serif; font-weight:700;
+    font-size:clamp(18px,3.4vw,22px); line-height:1.6;
+    color:var(--plum);
+    border-left:3px solid var(--gold);
+    padding-left:20px; margin:30px 0;
+  }
+
+  .grid{display:grid; gap:16px; margin-top:34px;}
+  .grid.g2{grid-template-columns:1fr 1fr;}
+  @media (max-width:640px){ .grid.g2{grid-template-columns:1fr;} }
+  .card{
+    background:var(--white); border:1px solid var(--line); border-radius:16px;
+    padding:26px 24px;
+  }
+  .card h3{font-size:17px; font-weight:800; color:var(--plum); margin-bottom:10px;}
+  .card p{font-size:14.5px; color:#4c4353;}
+  .card .tag{
+    display:inline-block; font-size:11.5px; font-weight:800; letter-spacing:.08em;
+    color:var(--gold); margin-bottom:10px;
+  }
+
+  .promise{background:var(--stage); color:#fff;}
+  .promise .sec-eyebrow{color:var(--gold);}
+  .promise h2{color:#fff;}
+  .promise .lines{margin-top:30px; max-width:640px;}
+  .promise .line{
+    display:flex; gap:16px; padding:20px 0;
+    border-bottom:1px solid rgba(255,255,255,.12);
+  }
+  .promise .line:last-child{border-bottom:none;}
+  .promise .mark{
+    font-family:'Noto Serif KR',serif; font-weight:900; color:var(--gold);
+    font-size:20px; line-height:1.4; flex:0 0 auto;
+  }
+  .promise .line h3{font-size:16.5px; font-weight:800; margin-bottom:4px;}
+  .promise .line p{font-size:14.5px; color:#c9bdd2;}
+  .promise .note{margin-top:26px; font-size:13px; color:#a294ad;}
+
+  table{width:100%; border-collapse:collapse; background:var(--white); border:1px solid var(--line); border-radius:14px; overflow:hidden; margin-top:26px; font-size:15px;}
+  th{background:var(--plum); color:#fff; text-align:left; padding:13px 16px; font-weight:700; font-size:14px;}
+  td{padding:13px 16px; border-top:1px solid var(--line); vertical-align:top;}
+  td.price{font-weight:800; color:var(--plum); white-space:nowrap; text-align:right;}
+  .fine{font-size:13px; color:var(--muted); margin-top:14px;}
+  .fine li{margin-bottom:6px; list-style:none; padding-left:14px; position:relative;}
+  .fine li::before{content:"·"; position:absolute; left:0; color:var(--gold); font-weight:900;}
+
+  .benefit{
+    margin-top:20px; background:#fdf9ee; border:1px solid #ecd9a8; border-radius:14px;
+    padding:20px 22px; font-size:14.5px;
+  }
+  .benefit b{color:#8a6a1e;}
+
+  .timeline{margin-top:30px; max-width:560px;}
+  .t-item{display:flex; gap:18px; position:relative; padding-bottom:26px;}
+  .t-item::before{
+    content:""; position:absolute; left:7px; top:22px; bottom:0;
+    width:1px; background:var(--line);
+  }
+  .t-item:last-child::before{display:none;}
+  .t-dot{
+    flex:0 0 auto; width:15px; height:15px; border-radius:50%;
+    background:var(--paper); border:3px solid var(--gold); margin-top:5px;
+  }
+  .t-item.major .t-dot{background:var(--gold);}
+  .t-date{font-weight:800; color:var(--plum); font-size:14.5px; min-width:96px;}
+  .t-desc{font-size:14.5px; color:#4c4353;}
+
+  details{
+    background:var(--white); border:1px solid var(--line); border-radius:14px;
+    margin-top:12px; overflow:hidden;
+  }
+  summary{
+    cursor:pointer; padding:18px 22px; font-weight:700; font-size:15.5px;
+    list-style:none; position:relative; padding-right:44px;
+  }
+  summary::-webkit-details-marker{display:none;}
+  summary::after{
+    content:"+"; position:absolute; right:20px; top:50%; transform:translateY(-50%);
+    color:var(--gold); font-weight:900; font-size:20px;
+  }
+  details[open] summary::after{content:"−";}
+  details .a{padding:0 22px 20px; font-size:14.5px; color:#4c4353;}
+
+  .final{
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 110%, rgba(201,162,75,.25), transparent 60%),
+      var(--stage);
+    color:#fff; text-align:center;
+  }
+  .final h2{font-family:'Noto Serif KR',serif; font-weight:900; font-size:clamp(24px,5vw,36px); line-height:1.45;}
+  .final p{color:#c9bdd2; margin-top:16px;}
+
+  footer{background:#171019; color:#9c8fa5; padding:40px 0 60px; font-size:12.5px; line-height:2;}
+  footer .biz{margin-bottom:14px;}
+  footer b{color:#cabfd2; font-weight:700;}
+  footer a{color:#cabfd2; text-decoration:none;}
+
+  .subhero{
+    background:
+      radial-gradient(ellipse 90% 55% at 50% -5%, rgba(201,162,75,.28), transparent 60%),
+      linear-gradient(180deg, rgba(36,24,48,.82) 0%, rgba(30,20,36,.92) 70%),
+      url('images/gozen-hero.jpg');
+    background-size:cover; background-position:center 15%;
+    color:#fff; text-align:center;
+    padding:64px 0 48px;
+  }
+  .subhero .eyebrow{
+    display:inline-block;
+    font-size:12px; letter-spacing:.34em; font-weight:700;
+    color:var(--gold);
+    padding-bottom:14px; margin-bottom:20px;
+    border-bottom:1px solid rgba(201,162,75,.5);
+  }
+  .subhero h1{
+    font-family:'Noto Serif KR', serif;
+    font-weight:900;
+    font-size:clamp(26px, 5vw, 40px);
+    line-height:1.4;
+  }
+  .subhero p{margin-top:16px; color:#d9cfe0; font-size:15px; max-width:520px; margin-left:auto; margin-right:auto;}
+  .back-link{display:inline-block; margin-top:22px; color:var(--gold-soft); font-size:13px; text-decoration:none; border-bottom:1px solid rgba(201,162,75,.4); padding-bottom:2px;}
+  .back-link:hover{color:var(--gold);}
+</style>
+
+</head>
+<body>
+<div class="topbar">
+  <div class="wrap">
+    <div class="brand"><a href="index.html" style="color:#fff; text-decoration:none;">ON-STAGE <span>BANGKOK</span> RETREAT</a></div>
+    <div class="right-cluster">
+      <nav class="nav-links">
+        <a href="curriculum.html" class="">커리큘럼 소개</a>
+        <a href="gozen.html" class="active">고젠아츠 소개</a>
+        <a href="residence.html" class="">숙소 안내</a>
+      </nav>
+      <div class="right-group">
+        <div class="social-mini">
+          <a href="https://www.instagram.com/onstagebkk" target="_blank" rel="noopener" aria-label="인스타그램" title="인스타그램 @onstagebkk">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="3.6"/><circle cx="17.3" cy="6.7" r="0.9" fill="currentColor" stroke="none"/></svg>
+          </a>
+          <a href="https://cafe.naver.com/onstagebkk" target="_blank" rel="noopener" aria-label="네이버 카페" title="네이버 카페">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 5h16v10.5H9L4 19V5z"/></svg>
+          </a>
+        </div>
+        <a class="cta-mini" href="https://forms.gle/mhgsySv1LRJNu5T97" target="_blank" rel="noopener">참가 신청</a>
+      </div>
+    </div>
+  </div>
+</div>
+<header class="subhero">
+  <div class="wrap">
+    <div class="eyebrow">EDUCATION PARTNER</div>
+    <h1 class="serif">무대에 서 온 사람들이<br>가르칩니다</h1>
+    <p>교육 파트너 고젠아츠(Gozen Arts)와 총괄 디렉터 야니카 고젠을 소개합니다.</p>
+    <a class="back-link" href="index.html">← 홈으로 돌아가기</a>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <div class="sec-eyebrow">EDUCATION PARTNER</div>
+    <h2 class="sec-title serif">고젠아츠 — 방콕 현지<br>공연예술 프로덕션</h2>
+    <p style="max-width:680px; margin-bottom:16px;">교육 파트너는 방콕 현지 공연예술 프로덕션 고젠아츠(Gozen Arts)입니다. 방콕에서 아이들에게 노래·춤·연기를 가르치는 공연예술 학교로, 아리(Ari)와 라마9(Rama 9) 두 곳에 스튜디오를 두고 있습니다. 온방리의 뮤지컬 커리큘럼과 그랜드 피날레 공연 제작 전체를 고젠아츠가 직접 맡습니다.</p>
+    <p style="margin-top:8px;"><a href="https://www.gozen-arts.com/" target="_blank" rel="noopener" style="color:var(--gold); font-weight:800; font-size:14px; text-decoration:none;">고젠아츠 공식 홈페이지 방문하기 →</a></p>
+  </div>
+</section>
+
+<section style="background:var(--white); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+  <div class="wrap">
+    <div class="sec-eyebrow">ON STAGE</div>
+    <h2 class="sec-title serif">아이들이 실제로 오른 무대</h2>
+    <p class="sec-lede">고젠아츠가 제작한 뮤지컬 공연 현장입니다. 겨울왕국과 위키드 무대에 야니카 고젠 디렉터가 직접 섰습니다.</p>
+    <div style="display:grid; grid-template-columns:1.3fr 1fr; gap:10px; margin-top:24px;">
+      <img src="images/gozen-wicked.jpg" alt="고젠아츠 위키드 뮤지컬 공연, 야니카 고젠과 학생들" style="width:100%; height:260px; object-fit:cover; object-position:center 40%; border-radius:12px;">
+      <img src="images/gozen-yanika-1.jpg" alt="야니카 고젠 디렉터, 엘사 역으로 공연 중" style="width:100%; height:260px; object-fit:cover; border-radius:12px;">
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-eyebrow">DIRECTOR</div>
+    <h2 class="sec-title serif">총괄 디렉터, 야니카 고젠</h2>
+    <p class="sec-lede">고젠아츠에서 뮤지컬 시어터·보컬 파트를 총괄하는 디렉터입니다. 방콕에서 4~40세 학생들을 5년 넘게 가르쳐 왔고, 기술보다 자신감을 먼저 키우는 걸 가르침의 원칙으로 삼고 있습니다.</p>
+    <div class="grid g2">
+      <div class="card">
+        <div class="tag">EDUCATION</div>
+        <h3>마히돌대학교 클래식 보컬 전공</h3>
+        <p>태국 최고 명문 음악대학인 마히돌대학교 음악대학에서 클래식 보컬 전공으로 학점 3.8/4.0으로 졸업했습니다.</p>
+      </div>
+      <div class="card">
+        <div class="tag">COMPETITION</div>
+        <h3>국제 콩쿠르 1위 입상</h3>
+        <p>대만 타이베이에서 열린 EIMOC 콩쿠르 1위를 수상했으며, 오스트리아 빈 무지크페라인 슈베르트잘에서 공연한 이력이 있습니다.</p>
+      </div>
+      <div class="card">
+        <div class="tag">PRODUCTION</div>
+        <h3>어린이 뮤지컬 25편 이상 연출</h3>
+        <p>커튼콜(CurtainCall) 소속으로 어린이 뮤지컬 25편 이상을 직접 준비·집필·연출했습니다.</p>
+      </div>
+      <div class="card">
+        <div class="tag">EXPERIENCE</div>
+        <h3>누적 지도 시간 800시간 이상</h3>
+        <p>다음 세대를 가르치는 데 800시간 이상을 투자했으며, 태국국제음악콩쿠르(TIMC) 등 여러 콩쿠르에 학생들을 입상시켰습니다.</p>
+      </div>
+    </div>
+    <p style="margin-top:20px;"><a href="https://www.gozen-arts.com/teachers/yanika-gozen-en" target="_blank" rel="noopener" style="color:var(--gold); font-weight:800; font-size:14px; text-decoration:none;">야니카 고젠 프로필 전체 보기 →</a></p>
+  </div>
+</section>
+
+<section style="background:var(--white); border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+  <div class="wrap">
+    <div class="sec-eyebrow">MUSICAL THEATRE PROGRAM</div>
+    <h2 class="sec-title serif">고젠아츠 뮤지컬 시어터<br>프로그램의 원칙</h2>
+    <div class="grid g2">
+      <div class="card">
+        <div class="tag">ORIGINAL SCRIPT</div>
+        <h3>오리지널 대본</h3>
+        <p>기성 작품을 그대로 따라 하지 않고, 참가하는 아이들에 맞춰 대본을 새로 씁니다.</p>
+      </div>
+      <div class="card">
+        <div class="tag">SMALL CLASS</div>
+        <h3>소규모 반 운영</h3>
+        <p>10명 넘는 반에서 아이가 묻히는 구조를 지양하고, 전원이 무대에서 자기 순간을 갖도록 소규모로 운영합니다.</p>
+      </div>
+      <div class="card">
+        <div class="tag">BILINGUAL</div>
+        <h3>영어 중심 이중언어 진행</h3>
+        <p>주 진행 언어는 영어이며, 필요한 순간에는 태국어·한국어 등으로 보조해 아이가 소외되지 않도록 합니다.</p>
+      </div>
+      <div class="card">
+        <div class="tag">RECORD</div>
+        <h3>공연 영상 기록 제공</h3>
+        <p>아이의 연기·노래 장면을 고화질 영상으로 남겨, 포트폴리오나 가족과의 공유용으로 제공합니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-eyebrow">ON-SITE</div>
+    <h2 class="sec-title serif">캠프 전 기간, 현장에 상주합니다</h2>
+    <p style="max-width:680px;">1월 3일부터 2월 2일까지, 야니카 고젠 디렉터가 캠프 전 기간 동안 현장에 상주하며 직접 지도합니다. 수업은 100% 영어로 진행되며, 영어 소통이 어려운 학생에게는 상주 통역이 필요한 순간에만 최소한으로 개입합니다. 한 반 최대 8명, 반당 강사 2명(리드 1 + 보조 1)이 함께합니다.</p>
+  </div>
+</section>
+
+<section style="background:var(--white); border-top:1px solid var(--line);">
+  <div class="wrap">
+    <div class="sec-eyebrow">ON-SITE SUPPORT</div>
+    <h2 class="sec-title serif">한국어가 통하는 어른이<br>항상 있습니다</h2>
+    <p style="max-width:680px; margin-bottom:16px;">한국인 코디네이터와 영어·한국어 통역 인력이 캠프 기간 내내 현장에 상주합니다. 아이의 수업 모습은 클래스 리포트(2~3일 1회)로 사진과 담당 강사 코멘트를 함께 받아 보실 수 있습니다.</p>
+    <p style="font-size:13px; color:var(--muted);">고젠아츠 인스타그램 <a href="https://instagram.com/gozenarts" target="_blank" rel="noopener" style="color:var(--plum); font-weight:700;">@gozenarts</a>에서 평소 수업·공연 모습을 더 보실 수 있습니다.</p>
+  </div>
+</section>
+
+<section class="final">
+  <div class="wrap">
+    <h2 class="serif">고젠아츠와 함께,<br>4주 만에 무대에 오릅니다.</h2>
+    <div class="cta-row">
+      <a class="btn btn-gold" href="https://forms.gle/mhgsySv1LRJNu5T97" target="_blank" rel="noopener">참가 신청하기</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="biz">
+      <b>온스테이지글로벌에듀</b> · 대표자: 황미라 · 사업자등록번호: 371-03-04516<br>
+      통신판매업신고번호: 제 2026-광주광산-0631호<br>
+      주소: 전남광주통합특별시 광산구 첨단과기로 53, 3층 A0006호(비아동)<br>
+      이메일: hjmking0959@hanmail.net · 상담 시간: 매일 09:00~18:00
+    </div>
+    <div>
+      인스타그램 <a href="https://www.instagram.com/onstagebkk" target="_blank" rel="noopener">@onstagebkk</a> ·
+      네이버 카페 <a href="https://cafe.naver.com/onstagebkk" target="_blank" rel="noopener">온스테이지 방콕 리트릿</a> ·
+      네이버 블로그 <a href="https://blog.naver.com/onstagebkk" target="_blank" rel="noopener">blog.naver.com/onstagebkk</a>
+    </div>
+    <div style="margin-top:14px; color:#6f6376;">© 2026 On-Stage Bangkok Retreat. All rights reserved.</div>
+  </div>
+</footer>
+</body>
+</html>
