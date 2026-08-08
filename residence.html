@@ -412,6 +412,10 @@
     twobed: {
       title: "투베드룸 프리미어",
       files: ["images/room-twobed-1.jpg","images/room-twobed-2.jpg","images/room-twobed-3.jpg","images/room-twobed-4.jpg"]
+    },
+    amenities: {
+      title: "부대시설",
+      files: ["images/amenity-pool.jpg","images/amenity-gym.jpg","images/amenity-sauna.jpg","images/amenity-lobby.jpg","images/amenity-breakfast.jpg","images/amenity-kids.jpg","images/amenity-yoga.jpg","images/amenity-ballroom.jpg","images/amenity-community.jpg","images/amenity-shuttle.jpg"]
     }
   };
   let currentRoom = null, currentIndex = 0;
@@ -488,13 +492,20 @@
 
 <section style="background:var(--white); border-top:1px solid var(--line);">
   <div class="wrap">
-    <div class="sec-eyebrow">A LOOK INSIDE</div>
-    <h2 class="sec-title serif">실제 숙소 모습</h2>
+    <div class="sec-eyebrow">FACILITIES</div>
+    <h2 class="sec-title serif">부대시설 모습</h2>
+    <p class="sec-lede">사진을 클릭하면 넘겨가며 크게 볼 수 있습니다.</p>
     <div class="gallery-grid" style="display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin-top:24px;">
-      <img src="images/gallery-lobby.jpg" alt="서머셋 라마9 로비" style="width:100%; height:140px; object-fit:cover; border-radius:10px;">
-      <img src="images/gallery-gym.jpg" alt="피트니스 시설" style="width:100%; height:140px; object-fit:cover; border-radius:10px;">
-      <img src="images/gallery-pool2.jpg" alt="인피니티풀" style="width:100%; height:140px; object-fit:cover; border-radius:10px;">
-      <img src="images/gallery-room.jpg" alt="원베드룸 객실" style="width:100%; height:140px; object-fit:cover; border-radius:10px;">
+      <button class="room-thumb" onclick="openGallery('amenities',0)" aria-label="인피니티풀 사진 더 보기"><img src="images/amenity-pool.jpg" alt="인피니티풀" style="width:100%; height:140px; object-fit:cover; border-radius:10px;"></button>
+      <button class="room-thumb" onclick="openGallery('amenities',1)" aria-label="피트니스 사진 더 보기"><img src="images/amenity-gym.jpg" alt="피트니스 시설" style="width:100%; height:140px; object-fit:cover; border-radius:10px;"></button>
+      <button class="room-thumb" onclick="openGallery('amenities',2)" aria-label="사우나 사진 더 보기"><img src="images/amenity-sauna.jpg" alt="사우나 시설" style="width:100%; height:140px; object-fit:cover; border-radius:10px;"></button>
+      <button class="room-thumb" onclick="openGallery('amenities',3)" aria-label="로비 사진 더 보기"><img src="images/amenity-lobby.jpg" alt="로비" style="width:100%; height:140px; object-fit:cover; border-radius:10px;"></button>
+      <button class="room-thumb" onclick="openGallery('amenities',4)" aria-label="조식당 사진 더 보기"><img src="images/amenity-breakfast.jpg" alt="조식당" style="width:100%; height:140px; object-fit:cover; border-radius:10px;"></button>
+      <button class="room-thumb" onclick="openGallery('amenities',5)" aria-label="키즈시설 사진 더 보기"><img src="images/amenity-kids.jpg" alt="키즈 시설" style="width:100%; height:140px; object-fit:cover; border-radius:10px;"></button>
+      <button class="room-thumb" onclick="openGallery('amenities',6)" aria-label="요가룸 사진 더 보기"><img src="images/amenity-yoga.jpg" alt="요가룸" style="width:100%; height:140px; object-fit:cover; border-radius:10px;"></button>
+      <button class="room-thumb" onclick="openGallery('amenities',7)" aria-label="볼룸 사진 더 보기"><img src="images/amenity-ballroom.jpg" alt="대형 볼룸" style="width:100%; height:140px; object-fit:cover; border-radius:10px;"></button>
+      <button class="room-thumb" onclick="openGallery('amenities',8)" aria-label="커뮤니티 라운지 사진 더 보기"><img src="images/amenity-community.jpg" alt="커뮤니티 라운지" style="width:100%; height:140px; object-fit:cover; border-radius:10px;"></button>
+      <button class="room-thumb" onclick="openGallery('amenities',9)" aria-label="셔틀버스 사진 더 보기"><img src="images/amenity-shuttle.jpg" alt="호텔 셔틀버스" style="width:100%; height:140px; object-fit:cover; border-radius:10px;"></button>
     </div>
   </div>
 </section>
